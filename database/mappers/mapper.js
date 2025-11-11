@@ -1,16 +1,16 @@
 // MariaDB에 접속할 모듈
 const mariadb = require("mariadb");
 // DB에서 실행할 SQL문을 별도 파일로 작성
-const sqlList = require("../sqls/board.js");
+const sqlList = require("../sqlList.js");
 
 // ConnectionPool 생성
 const connectionPool = mariadb.createPool({
   // DB에 접속하는 정보
-  host: process.env.DB_MYSQL_HOST,
-  port: process.env.DB_MYSQL_PORT,
-  user: process.env.DB_MYSQL_USERNAME,
-  password: process.env.DB_MYSQL_PASSWORD,
-  database: process.env.DB_MYSQL_DATABASE,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   connectionLimit: 10,
   // Object의 필드정보(Entiry)를 Query문에 있는 '?'에 자동변환 설정
   permitSetMultiParamEntries: true,

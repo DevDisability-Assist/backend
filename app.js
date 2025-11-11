@@ -1,4 +1,5 @@
-require("dotenv").config({ path: "./database/configs/dbConfig.env" });
+require("dotenv").config({ path: "./dbConfig.env" });
+console.log("[app.js] 1. Server process starting..."); // <-- 로그 1
 
 const express = require("express");
 const app = express();
@@ -25,3 +26,9 @@ app.get("/", (req, res) => {
 //라우팅 모듈 등록  endpoint에 위치한 미들웨어랑 다를게 없음
 const boardRouter = require("./routers/router.js");
 app.use("/", boardRouter);
+
+// [신규] 인증 라우터 등록
+console.log("[app.js] 2. Loading authRouter...");
+const authRouter = require("./routers/authRouter.js");
+app.use("/auth", authRouter);
+console.log("[app.js] 3. authRouter loaded.");
